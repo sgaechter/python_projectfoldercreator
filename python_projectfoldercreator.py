@@ -2,9 +2,13 @@ import tkinter as tk
 from tkinter import filedialog, messagebox, scrolledtext
 from pathlib import Path
 import yaml
+import sys
 
 # Absoluter Pfad zur YAML
-source_path = Path(__file__).resolve().parent
+if hasattr(sys, '_MEIPASS'):
+    source_path = Path(sys._MEIPASS)
+else:
+    source_path = Path(__file__).resolve().parent
 YAML_PATH = source_path / "project_structures.yaml"
 
 def load_structures():
